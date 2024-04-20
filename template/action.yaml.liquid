@@ -1,0 +1,24 @@
+name: {{ project-name }}
+description: '{{ description }}'
+author: '{{ authors }}'
+inputs:
+  arg1:
+    description: 'Sample required input parameter'
+    required: true
+  arg2:
+    description: 'Sample optional input parameter'
+    default: 'false'
+outputs:
+  out1:
+    description: 'Sample output parameter'
+runs:
+  using: 'docker'
+  image: ./Dockerfile
+# switch to pre-built image when ready
+#  image: 'docker://ghcr.io/{{ gh-username }}/{{ project-name }}:0.1.0'
+  args:
+    - "--arg1={% raw %}${{ inputs.arg1 }}{% endraw %}"
+    - "--arg2={% raw %}${{ inputs.arg2 }}{% endraw %}"
+branding:
+  icon: thumbs-up
+  color: green

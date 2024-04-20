@@ -1,0 +1,17 @@
+[package]
+name = "{{ project-name }}"
+description = "{{ description }}"
+version = "0.1.0"
+authors = ["{{ authors }}"]
+repository = "https://github.com/{{ gh-username }}/{{ project-name }}"
+edition = "2021"
+rust-version = "1.70"
+
+[dependencies]
+anyhow = "1"
+gha = "*"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = "debuginfo"
